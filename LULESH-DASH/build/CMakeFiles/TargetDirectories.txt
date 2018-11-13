@@ -1,3 +1,0 @@
-/home/douglas/dash-apps/lulesh/build/CMakeFiles/rebuild_cache.dir
-/home/douglas/dash-apps/lulesh/build/CMakeFiles/lulesh.dir
-/home/douglas/dash-apps/lulesh/build/CMakeFiles/edit_cache.dir
