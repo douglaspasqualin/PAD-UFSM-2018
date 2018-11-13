@@ -1,0 +1,5 @@
+# compiled files
+*.o
+
+#binary
+lulesh2.0

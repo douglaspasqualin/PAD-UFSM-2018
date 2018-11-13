@@ -16,3 +16,4 @@ Just type
 Verify the parameters in the run.sh and just type
 
 `./run.sh`
+
