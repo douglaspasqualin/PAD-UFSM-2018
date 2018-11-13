@@ -8,8 +8,8 @@ Forked from: https://github.com/LLNL/LULESH
 - Edit the MakeFile
 - Change the variable CXX to point for the version that you wish to use
 - Example: 
-`CXX = $(MPICXX) to use MPI + OPENMP`
-`CXX = $(SERCXX) to use OPENMP only`
+- `CXX = $(MPICXX)` to use MPI + OpenMP
+- `CXX = $(SERCXX)` to use OpenMP only
 
 
 ### Compiling
