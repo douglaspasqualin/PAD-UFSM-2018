@@ -1,3 +1,4 @@
+
 /*
   This is a Version 2.0 MPI + OpenMP implementation of LULESH
 
@@ -2733,6 +2734,7 @@ int main(int argc, char *argv[])
       printf("To print out progress, use -p\n");
       printf("To write an output file for VisIt, use -v\n");
       printf("See help (-h) for more options\n\n");
+      printf("Number of iterations %d\n", opts.its);
    }
 
    // Set up the mesh and decompose. Assumes regular cubes for now
@@ -2807,6 +2809,10 @@ int main(int argc, char *argv[])
       VerifyAndWriteFinalOutput(elapsed_timeG, *locDom, opts.nx, numRanks);
    }
 
+  if(myRank ==0) {
+    printf("%10.2f \t", elapsed_timeG);
+    printf("%d\n", omp_get_max_threads());
+  }
    delete locDom; 
 
 #if USE_MPI

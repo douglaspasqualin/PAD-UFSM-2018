@@ -14,4 +14,4 @@
 
 #MPIRUN = "/home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun"
 
-OMP_NUM_THREADS=6 /home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun -n 8 ./build/lulesh -i 10 -px 2 -py 2 -pz 2 -s 128 -p
+OMP_NUM_THREADS=6 /home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun -n 8 ./build/lulesh  -px 2 -py 2 -pz 2 -s 30 -i 1000 -q

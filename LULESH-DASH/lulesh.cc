@@ -67,6 +67,11 @@ int main(int argc, char *argv[])
   if( (myRank == 0) && (!opts.quiet()) ) {
     dom.VerifyAndWriteFinalOutput(elapsed, opts.nx(), numRanks);
   }
+  
+  if (myRank ==0) {
+     printf("%10.2f \t", elapsed);
+     printf("%d\n", omp_get_max_threads());
+  }
   dash::finalize();
 }
 
