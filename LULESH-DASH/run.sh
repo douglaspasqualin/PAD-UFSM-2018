@@ -12,5 +12,6 @@
 # [-v ]        Write an output file for VisIt
 # [-h ]        Print help message
 
+#MPIRUN = "/home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun"
 
-OMP_NUM_THREADS=1 mpirun -n 8 ./build/lulesh -i 8 -px 2 -py 2 -pz 2 -s 64 -p
+OMP_NUM_THREADS=6 /home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun -n 8 ./build/lulesh -i 10 -px 2 -py 2 -pz 2 -s 128 -p

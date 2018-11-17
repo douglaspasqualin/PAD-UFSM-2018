@@ -11,4 +11,8 @@
 # -h              : This message
 
 #OpenMP version
-OMP_NUM_THREADS=4 ./lulesh2.0 -i 8 -s 64 -p
+#OMP_NUM_THREADS=48 ./lulesh2.0 -i 8 -s 64 -p
+
+#Mpi
+OMP_NUM_THREADS=6 /home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun -n 8 ./lulesh2.0 -i 10 -s 128 -p
+

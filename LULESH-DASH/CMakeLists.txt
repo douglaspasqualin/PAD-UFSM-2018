@@ -8,7 +8,7 @@ set(DASH_DART_IMPL "MPI")
 ## Project Sources
 file(GLOB SOURCES *.cc)
 
-set(CXX_FLAGS "-O3 -Ofast -DUSE_DASH")
+set(CXX_FLAGS "-std=c++14 -O3 -Ofast -DUSE_DASH")
 set(CMAKE_CXX_STANDARD 11)
 
 ## Do not edit below this line unless you know what you are doing
