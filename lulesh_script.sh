@@ -22,9 +22,10 @@ echo "Executing OpenMP / MPI version"
 LULESH_EXEC=LULESH-OpenMP_MPI/lulesh2.0
 THREADS=1
 export OMP_NUM_THREADS=$THREADS
+echo "running  - $THREADS"
 for i in `seq 1 180`
 do
-  if [ `expr $i % 30` == 0 ] && [ `expr $i le 180` ] ; then
+  if [ `expr $i % 30` == 0 ] && [  "$i" -lt "180" ] ; then
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
     echo "running  - $THREADS"
@@ -38,9 +39,10 @@ echo "Executing DASH version"
 LULESH_EXEC=LULESH-DASH/build/lulesh
 THREADS=1
 export OMP_NUM_THREADS=$THREADS
+echo "running  - $THREADS"
 for i in `seq 1 180`
 do
-  if [ `expr $i % 30` == 0 ] && [ `expr $i <= 180` ] ; then
+  if [ `expr $i % 30` == 0 ] && [  "$i" -lt "180" ] ; then
     echo "ok - $THREADS"
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
