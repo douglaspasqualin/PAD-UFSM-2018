@@ -24,8 +24,8 @@ THREADS=1
 export OMP_NUM_THREADS=$THREADS
 for i in `seq 1 180`
 do
-  if [ `expr $i % 30` == 0 ]; then
-    echo "ok"
+  if [ `expr $i % 30` == 0 ] && [ `expr $i != 180` ] ; then
+    echo "ok - $THREADS"
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
   fi 
@@ -40,8 +40,8 @@ THREADS=1
 export OMP_NUM_THREADS=$THREADS
 for i in `seq 1 180`
 do
-  if [ `expr $i % 30` == 0 ]; then
-    echo "ok"
+  if [ `expr $i % 30` == 0 ] && [ `expr $i != 180` ] ; then
+    echo "ok - $THREADS"
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
   fi 
