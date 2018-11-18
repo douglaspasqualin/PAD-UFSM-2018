@@ -12,7 +12,7 @@ NUM_PROC=8
 CUBE_SIZE=30
 
 #Number of cycles to run
-CYCLES=1
+CYCLES=1000
 
 #delete outputfile
 rm -f output.txt
