@@ -24,10 +24,10 @@ THREADS=1
 export OMP_NUM_THREADS=$THREADS
 for i in `seq 1 180`
 do
-  if [ `expr $i % 30` == 0 ] && [ `expr $i != 180` ] ; then
-    echo "ok - $THREADS"
+  if [ `expr $i % 30` == 0 ] && [ `expr $i le 180` ] ; then
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
+    echo "running  - $THREADS"
   fi 
   $MPIRUN -n $NUM_PROC $LULESH_EXEC  -s $CUBE_SIZE -i $CYCLES -q >> output.txt 
 done
@@ -40,7 +40,7 @@ THREADS=1
 export OMP_NUM_THREADS=$THREADS
 for i in `seq 1 180`
 do
-  if [ `expr $i % 30` == 0 ] && [ `expr $i != 180` ] ; then
+  if [ `expr $i % 30` == 0 ] && [ `expr $i <= 180` ] ; then
     echo "ok - $THREADS"
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
