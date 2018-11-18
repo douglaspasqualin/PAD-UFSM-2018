@@ -70,7 +70,8 @@ int main(int argc, char *argv[])
   
   if (myRank ==0) {
      printf("%10.2f \t", elapsed);
-     printf("%d\n", omp_get_max_threads());
+     printf("%d \t", omp_get_max_threads());
+     printf("DASH\n");
   }
   dash::finalize();
 }

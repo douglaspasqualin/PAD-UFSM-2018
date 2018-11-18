@@ -1,7 +1,7 @@
 #!/bin/sh
 
-MPIRUN=mpirun
-#MPIRUN=/home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun
+#MPIRUN=mpirun
+MPIRUN=/home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun
 
 #Processors  must be a cube of an integer (1, 8, 27, ...)
 #PS: The number of OpenMP threads will be used in each processor. 
