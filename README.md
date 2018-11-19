@@ -4,7 +4,7 @@
 I have used
 - Cube size: 30
 - Number of processors: 8 (MPI Tasks)
-- Number of OpenMP Threads (1-6)
+- Number of OpenMP Threads (1-6) per MPI Task
 - Each configuration ran 30 times
 
 ### To run
