@@ -36,7 +36,7 @@ done
 echo "Executing DASH version"
 LULESH_EXEC=LULESH-DASH/build/lulesh
 THREADS=0
-for i in `seq 1 179`
+for i in `seq 0 179`
 do
   if [ `expr $i % 30` == 0 ] ; then
     THREADS=$((THREADS + 1))
