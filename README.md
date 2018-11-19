@@ -11,4 +11,6 @@ I have used
 
 `bash lulesh_script.sh`
 
-The results of the execution will be saved in the file output.txt. Use your prefered tool to generated the graphics. I have used R, according with the script script_r.R
+### Results
+
+The execution results will be saved in the file output.txt. Use your prefered tool to generated the graphics. I have used R, according with the script script_r.R
