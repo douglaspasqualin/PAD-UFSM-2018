@@ -1,15 +1,15 @@
 #!/bin/sh
 
-MPIRUN=mpirun
-#MPIRUN=/home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun
+#MPIRUN=mpirun
+MPIRUN=/home/dpasqualin/opt/openmpi-4.0.0/bin/mpirun
 
 #Processors  must be a cube of an integer (1, 8, 27, ...)
 #PS: The number of OpenMP threads will be used in each processor. 
 #For example, 8 processors and 4 threads = 32 threads in total.
-NUM_PROC=8
+NUM_PROC=1
 
 #Length of cube mesh along side
-CUBE_SIZE=30
+CUBE_SIZE=5
 
 #Number of cycles to run
 CYCLES=1
@@ -21,9 +21,9 @@ rm -f output.txt
 echo "Executing OpenMP / MPI version"
 LULESH_EXEC=LULESH-OpenMP_MPI/lulesh2.0
 THREADS=0
-for i in `seq 0 180`
+for i in `seq 0 179`
 do
-  if [ `expr $i % 30` == 0 ] && [  "$i" -lt "180" ] ; then
+  if [ `expr $i % 30` == 0 ] ; then
     THREADS=$((THREADS + 1))
     export OMP_NUM_THREADS=$THREADS
     echo "running  - $THREADS"
