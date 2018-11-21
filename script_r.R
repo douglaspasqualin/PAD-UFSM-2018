@@ -1,4 +1,4 @@
-setwd("/home/douglas/Desktop/PADUFSM")
+setwd("/home/douglas/Desktop/PAD-UFSM-2018")
 
 tg <- read.table("output.txt", sep="\t" ) # read a table from the file, using TAB as separator
 
@@ -73,6 +73,7 @@ ggplot(data=tgc2, aes(x=V2, y=V8, group=V3)) +
   geom_abline(intercept=0, slope=1, color="gray")+
   ggtitle(expression(atop("SpeedUp", atop(italic("8 processors and problem size 30^3"))))) +
   ylab("SpeedUp") +
+  xlab("Number of OpenMP threads per processor") +
   scale_y_continuous(limits=c(0.5,6), breaks=yticks, labels=yticks) + 
   scale_x_discrete(limit = c("1", "2", "3", "4", "5", "6"),
                  #labels = c("8","16","24", "32", "40","48")) +
