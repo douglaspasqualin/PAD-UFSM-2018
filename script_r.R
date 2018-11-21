@@ -40,47 +40,39 @@ ggplot(tgc, aes(x=V2, y=V1, fill=V3)) +
   theme(plot.title = element_text(hjust = 0.5)) #centered title
 
 
-tgc2 <- tgc
 
+### SpeedUp calculation
+tgc2 <- tgc
 
 newColSpeed <- 8
 ColTimeValue <- 4
 seqDash <- tgc2[1,ColTimeValue]
 seqOpenMP <- tgc2[2,ColTimeValue]
 
-
 #for 1 thread speedup is 1
-tgc2[1,newColSpeed] <- 1
-tgc2[2,newColSpeed] <- 1
-#2 threads
-tgc2[3,newColSpeed] <- seqDash/tgc2[3, ColTimeValue]
-tgc2[4,newColSpeed] <- seqOpenMP/tgc2[4, ColTimeValue]
-#3 threads
-tgc2[5,newColSpeed] <- seqDash/tgc2[5, ColTimeValue]
-tgc2[6,newColSpeed] <- seqOpenMP/tgc2[6, ColTimeValue]
-#3 threads
-tgc2[7,newColSpeed] <- seqDash/tgc2[7, ColTimeValue]
-tgc2[8,newColSpeed] <- seqOpenMP/tgc2[8, ColTimeValue]
-#4 threads
-tgc2[7,newColSpeed] <- seqDash/tgc2[7,ColTimeValue]
-tgc2[8,newColSpeed] <- seqOpenMP/tgc2[8,ColTimeValue]
-#5 threads
-tgc2[9,newColSpeed] <- seqDash/tgc2[9,ColTimeValue]
-tgc2[10,newColSpeed] <- seqOpenMP/tgc2[10,ColTimeValue]
-#6 threads
-tgc2[11,newColSpeed] <- seqDash/tgc2[11,ColTimeValue]
-tgc2[12,newColSpeed] <- seqOpenMP/tgc2[12,ColTimeValue]
+speedup <- 1
+tgc2[1,newColSpeed] <- speedup
+tgc2[2,newColSpeed] <- speedup
 
+#Calculate for another threads
+for (i in 3:12) {
+  if (i %% 2) {
+    speedup <- seqDash/tgc2[i, ColTimeValue]
+  } else {
+    speedup <- seqOpenMP/tgc2[i, ColTimeValue]
+  }
+  tgc2[i,newColSpeed] <- speedup
+}
 
+#Plot speedup
 yticks <- c(0,1,2,3,4,5,6,7,8,9,10)
 ggplot(data=tgc2, aes(x=V2, y=V8, group=V3)) + 
   theme_bw(base_size=11,base_family=10) +
   geom_line(aes(linetype=V3,group=V3,color=V3),size=0.5) +
   geom_point(aes(color=V3,shape=V3),size=2)+
   geom_abline(intercept=0, slope=1, color="gray")+
-  xlab("Number of OpenMP threads per processor") +
+  ggtitle(expression(atop("SpeedUp", atop(italic("8 processors and problem size 30^3"))))) +
   ylab("SpeedUp") +
-  ggtitle("Speedup") +
   scale_y_continuous(limits=c(0.5,6), breaks=yticks, labels=yticks) + 
   scale_x_discrete(limit = c("1", "2", "3", "4", "5", "6"),
                  #labels = c("8","16","24", "32", "40","48")) +
