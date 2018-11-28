@@ -1,6 +1,6 @@
 setwd("/home/douglas/Desktop/PAD-UFSM-2018")
 
-tg <- read.table("output.txt", sep="\t" ) # read a table from the file, using TAB as separator
+tg <- read.table("outputHydra.txt", sep="\t" ) # read a table from the file, using TAB as separator
 
 library(ggplot2)
 library(lattice)
@@ -14,7 +14,7 @@ newNames <- c("DASH", "OpenMP + MPI")
 # summarySE provides the standard deviation, standard error of the mean, and a (default 95%) confidence interval
 tgc <- summarySE(tg, measurevar="V1", groupvars=c("V2","V3"))
 
-yticks <- c(0,5,10,15,20,25,30,35,40,45,50,55,60)
+yticks <- c(0,10,20,30,40,50,60,70,80)
 #Plot graphic
 ggplot(tgc, aes(x=V2, y=V1, fill=V3)) + 
   geom_bar(position=position_dodge(), stat="identity", 
@@ -28,18 +28,16 @@ ggplot(tgc, aes(x=V2, y=V1, fill=V3)) +
   #ggtitle("LULESH") +
   xlab("Number of OpenMP threads per domain") +
   ylab("Time in seconds") +
-  annotate("text", x = 6, y = 50, label = "Less is better") + 
+  annotate("text", x = 7.5, y = 80, label = "Less is better") + 
   scale_y_continuous(limits=c(0,NA), breaks=yticks, labels=yticks) + 
-  scale_x_discrete(limit = c("1", "2", "3", "4", "5", "6"),
+  scale_x_discrete(limit = c("1", "2", "3", "4", "5", "6", "7", "8"),
                    #labels = c("8","16","24", "32", "40","48")) +
-                   labels = c("1","2","3", "4", "5","6")) +
+                   labels = c("1","2","3", "4", "5","6", "7", "8")) +
   scale_fill_manual(values = c("#006699", "#993300"),
                     name=Legend, # Legend label, use darker colors
                     breaks=originalNames,
-                    labels=newNames) +
+                    labels=newNames)  +
   theme(plot.title = element_text(hjust = 0.5)) #centered title
-
-
 
 ### SpeedUp calculation
 tgc2 <- tgc
@@ -55,7 +53,7 @@ tgc2[1,newColSpeed] <- speedup
 tgc2[2,newColSpeed] <- speedup
 
 #Calculate for another threads
-for (i in 3:12) {
+for (i in 3:16) {
   if (i %% 2) {
     speedup <- seqDash/tgc2[i, ColTimeValue]
   } else {
@@ -74,10 +72,10 @@ ggplot(data=tgc2, aes(x=V2, y=V8, group=V3)) +
   ggtitle(expression(atop("SpeedUp", atop(italic("8 domains and problem size 30^3"))))) +
   ylab("SpeedUp") +
   xlab("Number of OpenMP threads per domain") +
-  scale_y_continuous(limits=c(0.5,6), breaks=yticks, labels=yticks) + 
-  scale_x_discrete(limit = c("1", "2", "3", "4", "5", "6"),
+  scale_y_continuous(limits=c(0.5,8), breaks=yticks, labels=yticks) + 
+  scale_x_discrete(limit = c("1", "2", "3", "4", "5", "6", "7", "8"),
                  #labels = c("8","16","24", "32", "40","48")) +
-                 labels = c("1","2","3", "4", "5","6")) +
+                 labels = c("1","2","3", "4", "5","6", "7", "8")) +
   scale_linetype_discrete(name=Legend, # Legend label, use darker colors
                           breaks=originalNames,
                           labels=newNames) +
